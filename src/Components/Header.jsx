@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import logo from '/Images/logo1.png'
 import { NavLink } from 'react-router-dom'
-import { Menu, Target, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { name: "HOME",         path: "/" },
-  { name: "ABOUT",        path: "https://thedigicoders.com/about" },
-  { name: "REGISTRATION", path: "/registration" },
-  { name: "TRAINING",     path: "/training" },
-  { name: "SERVICES",     path: "/services" },
-  { name: "PLACEMENT",    path: "/placement" },
-  { name: "GALLERY",      path: "/gallery" },
-  { name: "CONTACT US",   path: "/contact" },
+  { name: "HOME",         path: "/",  external: false},
+  { name: "ABOUT",        path: "https://thedigicoders.com/about", external: true },
+  { name: "REGISTRATION", path: "https://thedigicoders.com/registration" , external: true},
+  { name: "TRAINING",     path: "https://thedigicoders.com/summer-training", external: true },
+  { name: "SERVICES",     path: "https://digicoders.in/Home/SoftwareDevelopment", external: true },
+  { name: "PLACEMENT",    path: "https://thedigicoders.com/placement", external: true },
+  { name: "GALLERY",      path: "https://thedigicoders.com/gallery", external: true },
+  { name: "CONTACT US",   path: "https://thedigicoders.com/contact", external: true },
 ]
 
 const Header = () => {
@@ -31,10 +31,21 @@ const Header = () => {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
+  // ✅ Universal link click handler
+  const handleLinkClick = (e, item, closeMobile = false) => {
+    if (closeMobile) setIsOpen(false)
+
+    if (item.external) {
+      e.preventDefault()
+      window.open(item.path, '_blank', 'noopener,noreferrer')
+    } else {
+      handleScrollTop()
+    }
+  }
+
   return (
     <>
       <style>{`
-        
         .dc-nav-link::after {
           content: '';
           position: absolute;
@@ -60,11 +71,6 @@ const Header = () => {
         }
         .dc-mobile-link:hover::before,
         .dc-mobile-link.active::before { transform: scaleY(1); }
-        @keyframes pulse-dot {
-          0%, 100% { box-shadow: 0 0 0 3px rgba(255,140,0,0.18); }
-          50%       { box-shadow: 0 0 0 6px rgba(255,140,0,0.06); }
-        }
-        .pulse-dot { animation: pulse-dot 2.2s infinite; }
       `}</style>
 
       {/* ── HEADER ── */}
@@ -77,7 +83,6 @@ const Header = () => {
           ${scrolled ? 'shadow-[0_4px_32px_rgba(255,120,0,0.08)]' : ''}
         `}
       >
-        {/* warm gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-orange-50/20 to-transparent pointer-events-none" />
 
         <div className="relative max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -93,16 +98,26 @@ const Header = () => {
           <ul className="hidden md:flex items-center list-none m-0 p-0">
             {navLinks.map((item) => (
               <li key={item.path}>
-                <NavLink
-                  to={item.path}
-                  onClick={handleScrollTop}
-                  className={({ isActive }) =>
-                    `dc-nav-link relative inline-block px-[14px] py-[6px] text-[0.78rem] font-semibold tracking-[0.06em] no-underline rounded-md transition-colors duration-200
-                    ${isActive ? 'text-orange-500 active' : 'text-gray-500 hover:text-orange-500'}`
-                  }
-                >
-                  {item.name}
-                </NavLink>
+                {item.external ? (                  
+                  <a  href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dc-nav-link relative inline-block px-[14px] py-[6px] text-[0.78rem] font-semibold tracking-[0.06em] no-underline rounded-md transition-colors duration-200 text-gray-500 hover:text-orange-500"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <NavLink
+                    to={item.path}
+                    onClick={handleScrollTop}
+                    className={({ isActive }) =>
+                      `dc-nav-link relative inline-block px-[14px] py-[6px] text-[0.78rem] font-semibold tracking-[0.06em] no-underline rounded-md transition-colors duration-200
+                      ${isActive ? 'text-orange-500 active' : 'text-gray-500 hover:text-orange-500'}`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>
@@ -137,7 +152,7 @@ const Header = () => {
         `}
       />
 
-      {/* ── DRAWER (right → left) ── */}
+      {/* ── DRAWER ── */}
       <nav
         aria-label="Mobile navigation"
         style={{
@@ -159,21 +174,15 @@ const Header = () => {
             Navigation
           </span>
           <button
-              onClick={() => setIsOpen(false)}
-              aria-label="Close menu"
-              style={{
-                width: '34px',
-                height: '34px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '8px',
-                border: '1.5px solid #fb923c',
-                backgroundColor: '#fff7ed',
-                cursor: 'pointer',
-                flexShrink: 0,
-              }}
-            >
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+            style={{
+              width: '34px', height: '34px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: '8px', border: '1.5px solid #fb923c',
+              backgroundColor: '#fff7ed', cursor: 'pointer', flexShrink: 0,
+            }}
+          >
             <X size={20} strokeWidth={2.5} color="#ea580c" />
           </button>
         </div>
@@ -182,28 +191,44 @@ const Header = () => {
         <ul className="list-none m-0 flex-1 flex flex-col gap-[3px] p-3">
           {navLinks.map((item) => (
             <li key={item.path}>
-              <NavLink
-                to={item.path}
-                onClick={() => { setIsOpen(false); handleScrollTop() }}
-                className={({ isActive }) =>
-                  `dc-mobile-link relative flex items-center gap-[10px] px-[14px] py-[11px] rounded-[10px] text-[0.84rem] font-semibold tracking-[0.04em] no-underline overflow-hidden transition-colors duration-150
-                  ${isActive
-                    ? 'bg-orange-50 text-orange-500 font-bold active'
-                    : 'text-gray-600 hover:bg-orange-50/60 hover:text-orange-500'
-                  }`
-                }
-              >
-                {item.name}
-              </NavLink>
+              {item.external ? (
+                // ✅ External — plain <a> with target="_blank"
+                
+                <a href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="dc-mobile-link relative flex items-center gap-[10px] px-[14px] py-[11px] rounded-[10px] text-[0.84rem] font-semibold tracking-[0.04em] no-underline overflow-hidden transition-colors duration-150 text-gray-600 hover:bg-orange-50/60 hover:text-orange-500"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                // ✅ Internal — NavLink
+                <NavLink
+                  to={item.path}
+                  onClick={() => { setIsOpen(false); handleScrollTop() }}
+                  className={({ isActive }) =>
+                    `dc-mobile-link relative flex items-center gap-[10px] px-[14px] py-[11px] rounded-[10px] text-[0.84rem] font-semibold tracking-[0.04em] no-underline overflow-hidden transition-colors duration-150
+                    ${isActive
+                      ? 'bg-orange-50 text-orange-500 font-bold active'
+                      : 'text-gray-600 hover:bg-orange-50/60 hover:text-orange-500'
+                    }`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              )}
             </li>
           ))}
         </ul>
 
         {/* CTA Button */}
         <div className="px-5 pt-4 pb-7 border-t border-orange-100/60">
-          <NavLink
-            to="/registration"
-            onClick={() => { setIsOpen(false); handleScrollTop() }}
+          
+          <a  href="https://thedigicoders.com/registration"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
             className="
               block text-center w-full py-[13px] rounded-xl
               text-[0.88rem] font-bold tracking-[0.04em] text-white no-underline
@@ -214,7 +239,7 @@ const Header = () => {
             "
           >
             🎓 Register for Training
-          </NavLink>
+          </a>
         </div>
       </nav>
     </>

@@ -43,7 +43,6 @@ const services = [
 const socialLinks = [
   { icon: FaFacebook,  title: "Facebook",  href: "#",                          hoverBg: "#1877f2" },
   { icon: FaInstagram, title: "Instagram", href: "#",                          hoverBg: "#e1306c" },
-  { icon: FaYoutube,   title: "YouTube",   href: "#",                          hoverBg: "#ff0000" },
   { icon: FaLinkedin,  title: "LinkedIn",  href: "#",                          hoverBg: "#0077b5" },
   { icon: FaXTwitter,  title: "Twitter",   href: "#",                          hoverBg: "#000000" },
   { icon: FaWhatsapp,  title: "WhatsApp",  href: "https://wa.me/919198483820", hoverBg: "#25d366" },
@@ -153,28 +152,6 @@ const Footer = () => {
               );
             })}
           </div>
-
-          {/* Contact Info */}
-          <div className="flex flex-col gap-3">
-            {[
-              { icon: FaPhoneAlt, text: "+91 9198483820",         href: "tel:+919198483820",              iconColor: '#ff8c00' },
-              { icon: FaPhoneAlt, text: "+91 6394 296 293",       href: "tel:+916394296293",              iconColor: '#ff8c00' },
-              { icon: MdEmail,    text: "info@thedigicoders.com", href: "mailto:info@thedigicoders.com",  iconColor: '#4caf50' },
-              { icon: FaGlobe,    text: "thedigicoders.com",      href: "https://thedigicoders.com",      iconColor: '#4caf50' },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <a key={item.text} href={item.href}
-                  className="flex items-center gap-2.5 text-sm text-gray-400 hover:text-white transition-colors group">
-                  <span className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <Icon size={12} style={{ color: item.iconColor }} />
-                  </span>
-                  {item.text}
-                </a>
-              );
-            })}
-          </div>
         </div>
 
         {/* Col 2: Training Programs */}
@@ -195,100 +172,17 @@ const Footer = () => {
               <FooterNavLink key={link.label} label={link.label} path={link.path} />
             ))}
           </ul>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap gap-2">
-            {["ISO Certified", "MOU Partner", "7+ Years", "Govt. Approved"].map((badge) => (
-              <span key={badge}
-                className="text-xs font-bold px-3 py-1 rounded-full border"
-                style={{ background: 'rgba(255,140,0,0.08)', color: '#ffb74d', borderColor: 'rgba(255,140,0,0.2)' }}>
-                {badge}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Col 4: Newsletter + Services */}
-        <div>
-          <FooterHeading title="Stay Updated" />
-          <p className="text-sm text-gray-400 leading-relaxed mb-4">
-            Get latest training notifications, placement updates &amp; tech blogs.
-          </p>
-
-          {subscribed ? (
-            <div className="rounded-xl p-4 text-center mb-6 border"
-              style={{ background: 'rgba(76,175,80,0.1)', borderColor: 'rgba(76,175,80,0.2)' }}>
-              <div className="font-bold text-sm mb-1" style={{ color: '#81c784' }}>Subscribed!</div>
-              <div className="text-gray-400 text-xs">We'll keep you updated.</div>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3 mb-6">
-              <input type="text" placeholder="Your Name" value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="px-4 py-2.5 text-sm rounded-xl text-white placeholder-gray-500 outline-none transition-colors"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
-                onFocus={e => e.target.style.borderColor = 'rgba(255,140,0,0.4)'}
-                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
-              />
-              <input type="email" placeholder="Your Email Address" value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="px-4 py-2.5 text-sm rounded-xl text-white placeholder-gray-500 outline-none transition-colors"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
-                onFocus={e => e.target.style.borderColor = 'rgba(255,140,0,0.4)'}
-                onBlur={e => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
-              />
-              <button onClick={handleSubscribe}
-                className="py-2.5 text-white text-sm font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: '#ff8c00' }}
-                onMouseEnter={e => e.target.style.background = '#e65100'}
-                onMouseLeave={e => e.target.style.background = '#ff8c00'}
-              >
-                Subscribe Now →
-              </button>
-            </div>
-          )}
-
+        {/* Col 4: Newsletter + Services */}          
           <div>
             <FooterHeading title="Our Services" />
             <ul className="flex flex-col gap-1">
               {services.map((s) => <FooterPlainLink key={s} label={s} />)}
             </ul>
           </div>
-        </div>
       </div>
-
-      {/* ── Branches strip ── */}
-      <div className="max-w-6xl mx-auto px-6 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            { city: "Lucknow", tag: "Head Office", address: "2nd Floor, B-36, Sector O, Aliganj, Lucknow UP 226021", near: "Near Ram Ram Bank Chauraha" },
-            { city: "Kanpur",  tag: "Branch",      address: "128/3/98, Yashoda Nagar, Kanpur UP 208011",             near: "Opp. Shivaji Park" },
-          ].map((b) => (
-            <div key={b.city}
-              className="flex items-start gap-3 rounded-xl p-4 transition-colors border"
-              style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,140,0,0.25)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
-            >
-              <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 border"
-                style={{ background: 'rgba(255,140,0,0.08)', borderColor: 'rgba(255,140,0,0.2)' }}>
-                <FaMapMarkerAlt size={14} style={{ color: '#ff8c00' }} />
-              </span>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-sm font-bold text-white">{b.city}</span>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full border"
-                    style={{ background: 'rgba(76,175,80,0.1)', color: '#81c784', borderColor: 'rgba(76,175,80,0.2)' }}>
-                    {b.tag}
-                  </span>
-                </div>
-                <p className="text-xs text-gray-400 leading-relaxed">{b.address}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{b.near}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    
 
       {/* ── Divider ── */}
       <div className="max-w-6xl mx-auto px-6">
