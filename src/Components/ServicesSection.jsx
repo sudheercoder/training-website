@@ -63,16 +63,8 @@ export default function ServicesSection() {
 
   return (
     <section className="bg-white text-black px-4 py-10 sm:px-8 md:px-12 lg:px-16">
-      
-      <h2 className="text-3xl md:text-4xl text-center font-extrabold text-black tracking-widest uppercase mb-2">
-        Our
-        <span className="text-orange-300 italic">
-          &nbsp;Services
-        </span>
-      </h2>
-
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center tracking-widest uppercase mb-2">Our&nbsp;Services</h2>
       <div className="mx-auto mb-6 h-[2px] w-32 md:w-48 rounded-full bg-gradient-to-r from-[#ff8c00] to-transparent" />
-
       <div className="flex flex-wrap gap-3">
         {services.map((service, index) => (
           <div
@@ -150,11 +142,9 @@ export default function ServicesSection() {
                     {service.name}
                   </p>
                 </div>
-
                 <p className="text-xs text-gray-400 leading-relaxed mb-3">
                   {service.desc}
                 </p>
-
                 <div className="flex flex-wrap gap-1.5">
                   {service.tags.map((tag) => (
                     <span
@@ -165,7 +155,6 @@ export default function ServicesSection() {
                     </span>
                   ))}
                 </div>
-
               </div>
             )}
           </div>

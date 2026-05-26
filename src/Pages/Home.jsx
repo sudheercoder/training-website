@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import CardSection from '../Components/CardSection';
-import { slides, features, branches } from '../Components/CardSection'
 import { IoCall } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaCircleArrowRight } from "react-icons/fa6";
@@ -11,10 +9,12 @@ import hero2 from '../../public/Images/hero2.jpg'
 import hero3 from '../../public/Images/hero3.jpg'
 import ExpertSection from '../Components/ExpertSection';
 import ServicesSection from '../Components/ServicesSection';
-import BranchCard from '../Components/BranchCard';
 import HeroSlider from '../Components/HeroSlider';
+import TrainingSection from '../Components/TrainingSection';
+import WhyChooseUs from '../Components/WhyChooseUs';
+import BranchesSection from '../Components/BranchSection';
 
-// ── Animated Counter ──────────────────────────────────────────────
+// ──----- Animated Counter ──────────
 function useCounter(target, duration = 2000, start = false) {
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -109,12 +109,7 @@ const Home = () => {
   const [whyInView,    setWhyInView]    = useState(false)
   const [aboutInView,  setAboutInView]  = useState(false)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  
 
   useEffect(() => {
     const pairs = [
@@ -188,15 +183,14 @@ const Home = () => {
       {/* HERO SECTION */}
         <HeroSlider/>
 
-      {/*------------------ STATS SECTION ---------------- */}
+      {/*-------- STATS SECTION --------- */}
 
       <section className="py-14 px-6 bg-white" ref={statsRef}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
-              Real Growth,  <span className='text-orange-500 italic'> Real Results</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Real Growth, Real Results
               <div className="mx-auto mt-3 h-[2px] w-52 rounded-full bg-gradient-to-r from-orange-500 to-transparent" />
-
             </h2>
             <p className="text-gray-500 max-w-md mx-auto">7+ years of real impact, real students, real results</p>
           </div>
@@ -208,23 +202,17 @@ const Home = () => {
 
       {/* ----------------RECENT PLACEMENTS —------------- marquee slider */}
       <section className="py-12 overflow-hidden px-10" style={{ background: "#f9f5f0" }}>
-
       {/* Keyframes */}
       <style>{`
         @keyframes marqueeLeft  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
         @keyframes marqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
       `}</style>
-
       {/* ── Heading ── */}
       <div className="max-w-6xl mx-auto mb-10 text-center">
-        {/* <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 text-[11px] font-bold uppercase tracking-[1.5px] px-4 py-1.5 rounded-full mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-600 inline-block" />
-          Our Students Got Placed
-        </div> */}
-        <h2 className="text-3xl md:text-4xl font-black text-gray-900 m-0">
-          Recent &nbsp;<span className="text-orange-500 italic">Placement</span>&nbsp; Highlights
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Recent &nbsp;Placement&nbsp; Highlights
         </h2>
-        <div className="mx-auto mt-3 h-[2px] w-42 rounded-full bg-gradient-to-r from-orange-500 to-transparent mb-5" />
+        <div className="mx-auto mt-3 h-[2px] w-52 rounded-full bg-gradient-to-r from-orange-500 to-transparent mb-5" />
       </div>
 
       {/* ── Row 1 — left ── */}
@@ -270,7 +258,7 @@ const Home = () => {
       </div>
 
       {/* ── Row 2 — right ── */}
-      <div className="mt-4 mb-8">
+      {/* <div className="mt-4 mb-8">
         <p className="text-[11px] font-bold uppercase tracking-[1.2px] text-gray-400 mb-2 px-1 text-right">Featured alumni ←</p>
         <div className="relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-0 z-10 pointer-events-none" style={{ background: "linear-gradient(to right,#f9f5f0,transparent)" }} />
@@ -309,14 +297,13 @@ const Home = () => {
               ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* ── Companies marquee ── */}
       <div>
         <div className='text-center'>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900  mb-4">
-              Hiring 
-              <span className='text-orange-500 italic'>&nbsp;Partners</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 my-8">
+              Hiring &nbsp;Partners
               <div className="mx-auto mt-3 h-[2px] w-42 rounded-full bg-gradient-to-r from-orange-500 to-transparent mb-5" />
 
             </h2>
@@ -354,53 +341,18 @@ const Home = () => {
 
       {/* ================= TRAINING CARDS SECTION =================== */}
       <div className='px-4 md:px-10 pt-10 bg-white'>
-        <CardSection />
+        <TrainingSection />
       </div>
 
       {/* ═══════════════ WHY CHOOSE US ═══════════════════ */}
-      <section className="py-10" ref={whyRef} style={{ background: '#f9f5f0' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
-              Why Choose{' '}
-              <span className='text-orange-500 italic'>DigiCoders</span>
-              <div className="mx-auto mt-3 h-[2px] w-52 rounded-full bg-gradient-to-r from-orange-500 to-transparent" />
-
-            </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Engineering tomorrow, today. We architect digital advantage for ambitious students and businesses.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="why-card group bg-white border border-gray-100 shadow-sm p-8 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl cursor-pointer"
-                style={whyInView ? { animation: `fadeUp 0.5s ease forwards ${index * 0.1}s`, opacity: 0, borderRadius: '24px 4px 24px 4px' } : { opacity: 0, borderRadius: '24px 4px 24px 4px' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,140,0,0.4)'; e.currentTarget.style.borderRadius = '4px 24px 4px 24px'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = '#f3f4f6'; e.currentTarget.style.borderRadius = '24px 4px 24px 4px'; }}
-              >
-                <div className="text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900">{feature.title}</h3>
-                <p className="text-gray-400 text-justify leading-relaxed text-sm">{feature.desc}</p>
-                <div className="why-bar mt-8 h-1 w-12 rounded-full bg-gradient-to-r from-[#ff8c00] to-[#2e7d32]" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyChooseUs/>
 
       {/* ═══════════════ ABOUT SECTION ══════════════════════ */}
       <section className="py-10 bg-white" ref={aboutRef}>
         <div className="text-center mb-9">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
-              About 
-              <span className='text-orange-500 italic'> DigiCoders</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+              About &nbsp;DigiCoders
               <div className="mx-auto mt-3 h-[2px] w-52 rounded-full bg-gradient-to-r from-orange-500 to-transparent" />
-                
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                We offer industrial training, vocational training, and live project-based courses.
@@ -486,28 +438,12 @@ const Home = () => {
       </section>
 
       {/* ═══════════ BRANCHES SECTION ═════════════════ */}
-      <section className="py-10" style={{ background: '#f9f5f0' }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black text-gray-900">
-              Our{' '}
-              <span className='text-orange-500 italic'>Branches</span>
-            </h2>
-            <div className="mx-auto mt-3 h-[2px] w-42 rounded-full bg-gradient-to-r from-orange-500 to-transparent" />
-            <p className="text-gray-500 mt-3">Serving students across Uttar Pradesh from two prime locations</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {branches.map((branch) => (
-              <BranchCard key={branch.city} {...branch} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <BranchesSection/>
 
-      {/* ════════ SERVICES SECTION ═══════════════ */}
+      {/* ════════ SERVICES SECTION ═══════════ */}
       <ServicesSection />
 
-      {/* ═════════ FINAL CTA SECTION ═══════════════ */}
+      {/* ═════════ FINAL CTA SECTION ══════════ */}
       <section className="relative overflow-hidden py-14 px-6"
         style={{ background: 'linear-gradient(135deg, #0d1b2a 0%, #1a2f1a 50%, #0d1b2a 100%)' }}>
 

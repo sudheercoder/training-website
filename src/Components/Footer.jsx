@@ -12,14 +12,14 @@ import { ChevronRight } from "lucide-react";
 import logo from '../../public/Images/logo1.png'
 
 const trainingLinks = [
-  { label: "Vocational Training",     path: "/training" },
-  { label: "Summer Training",         path: "/training" },
-  { label: "Winter Training",         path: "/training" },
-  { label: "Industrial Training",     path: "/training" },
-  { label: "Apprenticeship Training", path: "/training" },
-  { label: "Internship Training",     path: "/training" },
-  { label: "Project Training",        path: "/training" },
-  { label: "Faculty Training",        path: "/training" },
+  { label: "Vocational Training",     path: "https://thedigicoders.com/vocational-training" },
+  { label: "Summer Training",         path: "https://thedigicoders.com/summer-training"  },
+  { label: "Winter Training",         path: "https://thedigicoders.com/winter-training"},
+  { label: "Industrial Training",     path: "https://thedigicoders.com/industrial-training" },
+  { label: "Apprenticeship Training", path: "https://thedigicoders.com/apprenticeship-training"  },
+  { label: "Internship Training",     path: "https://thedigicoders.com/internship-training"  },
+  { label: "Project Training",        path: "https://thedigicoders.com/project-training"},
+  { label: "Faculty Training",        path: "https://thedigicoders.com/faculty-training"},
 ];
 
 const quickLinks = [
@@ -65,6 +65,7 @@ const FooterNavLink = ({ label, path }) => (
     <NavLink
       to={path}
       onClick={handleScrollTop}
+      target="_blank"
       className="flex items-center gap-1.5 text-sm text-gray-400 font-medium py-0.5 transition-all duration-200 hover:pl-1 group"
       style={({ isActive }) => isActive ? { color: '#ff8c00' } : {}}
     >

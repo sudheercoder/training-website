@@ -1,91 +1,5 @@
-import React from 'react'
-import BranchCard from './BranchCard'
-import TrainingCard from './TrainingCard'
-import lucknow from '/Images/hero1.jpg'
-import kanpur from '/Images/hero2.jpg'
-import { FaBriefcase, FaChalkboardTeacher, FaMicrochip, FaRocket, FaShieldAlt, FaUserTie } from 'react-icons/fa'
-
-
-//for  hero section
-  export const slides = [
-    {
-      title: "Training and Placement Programs",
-      desc: "Empowering students with industry-relevant skills and providing placement opportunities to kickstart successful careers.",
-      video: "/Videos/hero1.mp4",
-    },
-    {
-      title: "Custom Web & App Development",
-      desc: "Fast, secure, and user-friendly applications designed to grow your business.",
-      video: "/Videos/hero1.mp4",
-    },
-    {
-      title: "AI & Cloud-Driven Innovation",
-      desc: "Leverage modern technologies to automate, scale, and stay ahead of the competition.",
-      video: "/Videos/hero1.mp4",
-    },
-    {
-      title: "Skill-Based Seminars & Workshops",
-      desc: "Hands-on sessions and expert-led workshops focused on real-world skills to enhance learning and career readiness.",
-      video: "/Videos/hero1.mp4",
-    },
-   ];
-   // Why choose us 
-
-  export const features = [
-    {
-      icon: <FaUserTie />,
-      title: "Expert Mentors & Developers",
-      desc: "Learn and collaborate with experienced mentors and skilled developers who bring real industry insights and practical problem-solving expertise",
-    },
-    {
-      icon: <FaChalkboardTeacher />,
-      title: "Industry-Oriented Training",
-      desc: "Hands-on training with real-world projects, modern tools, and industry practices to make students job-ready and confident professionals.",
-    },
-    {
-      icon: <FaBriefcase />,
-      title: "Placement & Career Support",
-      desc: "Comprehensive career support including resume building, mock interviews, and placement assistance to help students confidently secure job opportunities.",
-    },
-    {
-      icon: <FaRocket />,
-      title: "Fast & Scalable Development",
-      desc: "We build high-performance, scalable applications using modern technologies to ensure speed, reliability, and seamless growth for your business.",
-    },
-    {
-      icon: <FaShieldAlt />,
-      title: "Secure & Reliable Solutions",
-      desc: "We deliver secure, reliable software solutions with best practices, data protection, and consistent performance you can depend on",
-    },
-    {
-      icon: <FaMicrochip />,
-      title: "Latest Technology Stack",
-      desc: "We use modern, cutting-edge technologies and frameworks to build efficient, future-ready solutions that keep you ahead of the competition",
-    },
-  ];
-
-   // Our  branches
- export const branches = [
-    {
-      city: "Lucknow",
-      image: lucknow,
-      location: "2nd Floor, B-36, Sector O, Near Ram Ram Bank Chauraha, Aliganj, Lucknow UP 226021",
-      contact: "+91 9198483820",
-      email: "info@thedigicoders.com",
-      hours: "Mon-Sat: 10:00 AM - 7:00 PM",
-    },
-    {
-      city: "Kanpur",
-      image: kanpur,
-      location: "128/3/98, Yashoda Nagar, Kanpur UP 208011, Opp. Shivaji Park",
-      contact: "+91 6394 296 293",
-      email: "info@thedigicoders.com",
-      hours: "Mon-Sat: 10:00 AM - 7:00 PM",
-    },
-  ]
-
-   //For Training
-  export const trainingData = [
+// ──────── DATA ─────────
+const trainingData = [
   {
     id: 1,
     icon: (
@@ -205,40 +119,140 @@ import { FaBriefcase, FaChalkboardTeacher, FaMicrochip, FaRocket, FaShieldAlt, F
   },
 ];
 
-const CardSection = () => {
+// ─────────── SUB-COMPONENTS ────────────
+
+// Featured badge
+const Badge = () => (
+  <span
+    className="absolute top-4 right-4 text-white text-xs font-semibold px-3 py-1 rounded-full tracking-wide"
+    style={{ background: "#ff8c00" }}
+  >
+    Featured
+  </span>
+);
+
+// Icon wrapper
+const IconBox = ({ children }) => (
+  <div
+    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-white/20 group-hover:text-white"
+    style={{ background: "#fff3e0", color: "#ff8c00" }}
+  >
+    {children}
+  </div>
+);
+
+// Register button
+const RegisterBtn = ({ variant }) => {
+  const base =
+    "mt-5 w-full py-2.5 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 focus:outline-none";
+
+  if (variant === "orange") {
+    return (
+      <button
+        className={base}
+        style={{ background: "#ff8c00", color: "white" }}
+        onMouseEnter={(e) => {
+          e.target.style.background = "white";
+          e.target.style.color = "#ff8c00";
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = "#ff8c00";
+          e.target.style.color = "white";
+        }}
+      >
+        Register
+      </button>
+    );
+  }
+
   return (
-    <div>
+    <button
+      className={`${base} group-hover:bg-white`}
+      style={{ background: "#2e7d32", color: "white" }}
+      onMouseEnter={(e) => {
+        e.target.style.background = "white";
+        e.target.style.color = "#2e7d32";
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.background = "#2e7d32";
+        e.target.style.color = "white";
+      }}
+    >
+      Register
+    </button>
+  );
+};
 
-      {/* ✅ Training Section — */}
-      <div className="text-center p">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
-          IT <span className='text-orange-400 italic'>Training</span>&nbsp; Programs
-        </h2>
-        <div className="mx-auto mt-3 h-[2px] w-52 bg-gradient-to-r from-orange-500 to-transparent rounded-full"></div>
+// Training card
+const TrainingCard = ({ icon, title, audience, description, featured, btnVariant }) => (
+  <div
+    className="group relative bg-gray-100 text-black p-7 flex flex-col border border-gray-100 shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-1.5"
+    style={{ borderRadius: "24px 4px 24px 4px" }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.background = "#0d1b2a";
+      e.currentTarget.style.borderRadius = "2px 24px 2px 24px";
+      e.currentTarget.style.borderColor = "#ff8c00";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background = "#f3f4f6";
+      e.currentTarget.style.borderRadius = "24px 2px 24px 2px";
+      e.currentTarget.style.borderColor = "#f3f4f6";
+    }}
+  >
+    {featured && <Badge />}
+    <IconBox>{icon}</IconBox>
+    <h3 className="text-lg font-bold mb-2 text-[#1a1a1a] transition-colors duration-300 group-hover:text-white">
+      {title}
+    </h3>
+    <span
+      className="inline-block text-xs font-medium px-3 py-1 rounded-md mb-3 w-fit transition-all duration-300 group-hover:bg-white/10 group-hover:text-orange-200"
+      style={{ background: "#f3f4f6", color: "#6b7280" }}
+    >
+      {audience}
+    </span>
 
-        <p className="text-gray-500 text-base pt-3 md:text-lg">
-          Specially designed for Engineering Students &amp; Professionals
-        </p>
-      </div>
-      <section className="relative py-10 px-4 overflow-hidden" id="training">
-        <div className="relative  max-w-6xl mx-auto">
-          <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {trainingData.map((card) => (
-              <TrainingCard
-                key={card.id}
-                icon={card.icon}
-                title={card.title}
-                audience={card.audience}
-                description={card.description}
-                featured={card.featured}
-                btnVariant={card.btnVariant}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+    <p
+      className="text-sm leading-relaxed flex-1 transition-colors duration-300 group-hover:text-gray-300"
+      style={{ color: "#6b7280" }}
+    >
+      {description}
+    </p>
+
+    <RegisterBtn variant={btnVariant} />
+  </div>
+);
+
+// ──────── TRAINING SECTION ──────────
+const TrainingSection = () => (
+  <div>
+    {/* Header */}
+    <div className="text-center">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Training &nbsp;Programs</h2>
+      <div className="mx-auto mt-3 h-[2px] w-52 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
+      <p className="text-gray-500 text-base pt-3 md:text-lg">
+        Specially designed for Engineering Students &amp; Professionals
+      </p>
     </div>
-  )
-}
 
-export default CardSection
+    {/* Grid */}
+    <section className="relative py-10 px-4 overflow-hidden" id="training">
+      <div className="relative max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {trainingData.map((card) => (
+            <TrainingCard
+              key={card.id}
+              icon={card.icon}
+              title={card.title}
+              audience={card.audience}
+              description={card.description}
+              featured={card.featured}
+              btnVariant={card.btnVariant}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+);
+
+export default TrainingSection;

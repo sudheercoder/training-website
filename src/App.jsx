@@ -35,7 +35,7 @@ const App = () => {
         {/* Call & WhatsApp FABs */}
         <div className="fixed bottom-5 left-5 flex flex-col gap-3 z-50">
           <a href="tel:+919198483820"
-            className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full text-white text-xl shadow-lg hover:-translate-y-0.5 transition-all">
+            className="bg-orange-600 hover:bg-orange-700 p-3 rounded-full text-white text-xl shadow-lg hover:-translate-y-0.5 transition-all">
             <IoCall />
           </a>
           <a href="https://wa.me/919198483820" target="_blank" rel="noreferrer"

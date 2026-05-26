@@ -11,6 +11,7 @@ const navLinks = [
   { name: "SERVICES",     path: "https://digicoders.in/Home/SoftwareDevelopment", external: true },
   { name: "PLACEMENT",    path: "https://thedigicoders.com/placement", external: true },
   { name: "GALLERY",      path: "https://thedigicoders.com/gallery", external: true },
+  { name: "BLOGS",        path: "https://thedigicoders.com/blog", external: true },
   { name: "CONTACT US",   path: "https://thedigicoders.com/contact", external: true },
 ]
 
