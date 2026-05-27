@@ -1,5 +1,24 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { FaShieldAlt } from "react-icons/fa";
+import {
+  FaShieldAlt, FaNetworkWired, FaBug, FaBolt,
+  FaFire, FaSearch, FaSatelliteDish,
+  FaCloud, FaAws, FaDocker, FaSyncAlt,
+  FaRobot, FaPython, FaChartBar, FaBrain,
+  FaArrowLeft, FaArrowRight, FaLaptopCode,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+} from "react-icons/fa";
+import {
+   SiGooglecloud, SiKubernetes,
+  SiTensorflow, SiPandas, SiMongodb,
+  SiExpress,
+  SiJavascript,
+} from "react-icons/si";
+import { VscAzure } from "react-icons/vsc";
+import { MdSecurity, MdOutlineLanguage } from "react-icons/md";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { BiNetworkChart } from "react-icons/bi";
 
 // ─── Slide Data ────────────────────────────────────────────────────────────────
 const SLIDES = [
@@ -24,16 +43,16 @@ const SLIDES = [
     btnOutlineColor: "#4caf50",
     btnOutlineText: "#81c784",
     orbit: {
-      center: { emoji: "🛡️", label: "Security" },
+      center: { Icon: FaShieldAlt, label: "Security", color: "#ff8c00" },
       inner: [
-        { label: "Network", emoji: "🌐", color: "#4fc3f7" },
-        { label: "Malware", emoji: "🦠", color: "#ef5350" },
-        { label: "Ethical Hack", emoji: "⚡", color: "#66bb6a" },
+        { label: "Network", Icon: FaNetworkWired, color: "#4fc3f7" },
+        { label: "Malware", Icon: FaBug, color: "#ef5350" },
+        { label: "Ethical Hack", Icon: FaBolt, color: "#66bb6a" },
       ],
       outer: [
-        { label: "Firewall", emoji: "🔥", color: "#ffa726" },
-        { label: "VAPT", emoji: "🔍", color: "#ab47bc" },
-        { label: "SOC", emoji: "📡", color: "#26c6da" },
+        { label: "Firewall", Icon: FaFire, color: "#ffa726" },
+        { label: "VAPT", Icon: FaSearch, color: "#ab47bc" },
+        { label: "SOC", Icon: FaSatelliteDish, color: "#26c6da" },
       ],
     },
   },
@@ -58,16 +77,16 @@ const SLIDES = [
     btnOutlineColor: "#1d9e75",
     btnOutlineText: "#5dcaa5",
     orbit: {
-      center: { emoji: "☁️", label: "Cloud" },
+      center: { Icon: FaCloud, label: "Cloud", color: "#1d9e75" },
       inner: [
-        { label: "AWS", emoji: "🅰", color: "#ff9900" },
-        { label: "Azure", emoji: "🔷", color: "#0078d4" },
-        { label: "GCP", emoji: "🌍", color: "#4285f4" },
+        { label: "AWS", Icon: FaAws, color: "#ff9900" },
+        { label: "Azure", Icon: VscAzure, color: "#0078d4" },
+        { label: "GCP", Icon: SiGooglecloud, color: "#4285f4" },
       ],
       outer: [
-        { label: "Docker", emoji: "🐳", color: "#2496ed" },
-        { label: "K8s", emoji: "⚙️", color: "#326ce5" },
-        { label: "DevOps", emoji: "🔄", color: "#5dcaa5" },
+        { label: "Docker", Icon: FaDocker, color: "#2496ed" },
+        { label: "K8s", Icon: SiKubernetes, color: "#326ce5" },
+        { label: "DevOps", Icon: FaSyncAlt, color: "#5dcaa5" },
       ],
     },
   },
@@ -92,159 +111,211 @@ const SLIDES = [
     btnOutlineColor: "#ba7517",
     btnOutlineText: "#fac775",
     orbit: {
-      center: { emoji: "🤖", label: "AI / ML" },
+      center: { Icon: FaRobot, label: "AI / ML", color: "#ba7517" },
       inner: [
-        { label: "Python", emoji: "🐍", color: "#ffd43b" },
-        { label: "TensorFlow", emoji: "🔶", color: "#ff8f00" },
-        { label: "Pandas", emoji: "🐼", color: "#e040fb" },
+        { label: "Python", Icon: FaPython, color: "#ffd43b" },
+        { label: "TensorFlow", Icon: SiTensorflow, color: "#ff8f00" },
+        { label: "Pandas", Icon: SiPandas, color: "#e040fb" },
       ],
       outer: [
-        { label: "Power BI", emoji: "📊", color: "#f2c811" },
-        { label: "NLP", emoji: "💬", color: "#ab47bc" },
-        { label: "Deep Learn", emoji: "🧠", color: "#ef5350" },
+        { label: "Power BI", Icon: FaChartBar, color: "#f2c811" },
+        { label: "NLP", Icon: MdOutlineLanguage, color: "#ab47bc" },
+        { label: "Deep Learn", Icon: FaBrain, color: "#ef5350" },
       ],
     },
   },
+  {
+  id: 3,
+  accent: "#2563eb",
+  accentDark: "#1e40af",
+  glowRgb: "37,99,235",
+  bgGradient: "linear-gradient(135deg,#050816 0%,#0b1225 55%,#111827 100%)",
+  patternStroke: "rgba(96,165,250,0.35)",
+  patternType: "circles",
+  badge: "Full Stack Development",
+  titlePre: "Become a ",
+  titleHighlight: "Full Stack Developer",
+  titlePost: "\nBuild Real Apps",
+  desc: "Learn MERN Stack with live projects, APIs, databases & deployment. Industry-ready skills from frontend to backend.",
+  stats: [
+    { val: "10K+", lbl: "Developers" },
+    { val: "100+", lbl: "Projects" },
+    { val: "24/7", lbl: "Support" },
+  ],
+  btnOutlineColor: "#2563eb",
+  btnOutlineText: "#93c5fd",
+  orbit: {
+    center: { Icon: FaLaptopCode, label: "MERN Stack", color: "#2563eb" },
+    inner: [
+      { label: "React", Icon: FaReact, color: "#61dafb" },
+      { label: "Node.js", Icon: FaNodeJs, color: "#68a063" },
+      { label: "MongoDB", Icon: SiMongodb, color: "#47a248" },
+    ],
+    outer: [
+      { label: "Express", Icon: SiExpress, color: "#ffffff" },
+      { label: "JavaScript", Icon: SiJavascript, color: "#f7df1e" },
+      { label: "GitHub", Icon: FaGithub, color: "#f5f5f5" },
+    ],
+  },
+}
 ];
 
 const DURATION = 5000;
 
-// ─── Orbit Canvas ───────────────────────
-function OrbitCanvas({ slide }) {
-  const canvasRef = useRef(null);
+// ─── SVG Orbit Visual ──────────────────────────────────────────────────────────
+function OrbitVisual({ slide, active }) {
+  const [tick, setTick] = useState(0);
   const rafRef = useRef(null);
-
-  const draw = useCallback(() => {
-    const cv = canvasRef.current;
-    if (!cv) return;
-    const ctx = cv.getContext("2d");
-    const W = cv.width;
-    const H = cv.height;
-    const cx = W / 2;
-    const cy = H / 2;
-    const t = Date.now() / 1000;
-    const { accent, orbit } = slide;
-
-    ctx.clearRect(0, 0, W, H);
-
-    const bgGr = ctx.createRadialGradient(cx, cy, 10, cx, cy, 148);
-    bgGr.addColorStop(0, accent + "28");
-    bgGr.addColorStop(1, "transparent");
-    ctx.fillStyle = bgGr;
-    ctx.beginPath();
-    ctx.arc(cx, cy, 148, 0, Math.PI * 2);
-    ctx.fill();
-
-    [120, 180].forEach((r, ri) => {
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.strokeStyle = ri === 0 ? "rgba(255,255,255,0.10)" : "rgba(255,255,255,0.10)";
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 9]);
-      ctx.stroke();
-      ctx.setLineDash([]);
-    });
-
-    orbit.inner.forEach((orb, i) => {
-      const ang = (i * ((Math.PI * 2) / 3)) + t * 0.55;
-      const ox = cx + 120 * Math.cos(ang);
-      const oy = cy + 120 * Math.sin(ang);
-      drawOrb(ctx, ox, oy, orb, cy);
-    });
-
-    orbit.outer.forEach((orb, i) => {
-      const ang = (i * ((Math.PI * 2) / 3)) + 1.05 - t * 0.35;
-      const ox = cx + 180 * Math.cos(ang);
-      const oy = cy + 180 * Math.sin(ang);
-      drawOrb(ctx, ox, oy, orb, cy);
-    });
-
-    const pulse = 0.92 + 0.08 * Math.sin(t * 2.5);
-    const cGr = ctx.createRadialGradient(cx, cy, 0, cx, cy, 36 * pulse);
-    cGr.addColorStop(0, accent + "dd");
-    cGr.addColorStop(0.55, accent + "88");
-    cGr.addColorStop(1, accent + "11");
-    ctx.beginPath();
-    ctx.arc(cx, cy, 36 * pulse, 0, Math.PI * 2);
-    ctx.fillStyle = cGr;
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(cx, cy, 34, 0, Math.PI * 2);
-    ctx.strokeStyle = accent;
-    ctx.lineWidth = 1.8;
-    ctx.stroke();
-
-    ctx.font = "20px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "#fff";
-    ctx.fillText(orbit.center.emoji, cx, cy - 5);
-
-    ctx.font = "bold 9px sans-serif";
-    ctx.fillStyle = "rgba(255,255,255,0.75)";
-    ctx.fillText(orbit.center.label, cx, cy + 14);
-
-    const sparkR = 38 + 3 * Math.sin(t * 4);
-    for (let sp = 0; sp < 6; sp++) {
-      const sa = t * 1.5 + sp * (Math.PI / 3);
-      const sx = cx + sparkR * Math.cos(sa);
-      const sy = cy + sparkR * Math.sin(sa);
-      ctx.beginPath();
-      ctx.arc(sx, sy, 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = accent;
-      ctx.globalAlpha = 0.65;
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-
-    rafRef.current = requestAnimationFrame(draw);
-  }, [slide]);
-
-  function drawOrb(ctx, ox, oy, orb, cy) {
-    const g = ctx.createRadialGradient(ox, oy, 0, ox, oy, 24);
-    g.addColorStop(0, orb.color + "55");
-    g.addColorStop(1, "transparent");
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(ox, oy, 24, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.arc(ox, oy, 17, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(10,15,26,0.93)";
-    ctx.fill();
-    ctx.strokeStyle = orb.color;
-    ctx.lineWidth = 1.6;
-    ctx.stroke();
-
-    ctx.font = "11px Arial";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillStyle = "#fff";
-    ctx.fillText(orb.emoji, ox, oy);
-
-    const offY = oy > cy ? 28 : -28;
-    ctx.font = "600 9.5px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillStyle = orb.color;
-    ctx.globalAlpha = 0.88;
-    ctx.fillText(orb.label, ox, oy + offY);
-    ctx.globalAlpha = 1;
-  }
+  const startRef = useRef(Date.now());
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(draw);
+    if (!active) return;
+    const loop = () => {
+      setTick(Date.now());
+      rafRef.current = requestAnimationFrame(loop);
+    };
+    rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [draw]);
+  }, [active]);
+
+  const t = (Date.now() - startRef.current) / 1000;
+  const { accent, orbit } = slide;
+  const cx = 225;
+  const cy = 225;
+  const R1 = 110;
+  const R2 = 170;
+  const pulse = 0.92 + 0.08 * Math.sin(t * 2.5);
+
+  const innerPositions = orbit.inner.map((orb, i) => {
+    const ang = i * ((Math.PI * 2) / 3) + t * 0.55;
+    return { x: cx + R1 * Math.cos(ang), y: cy + R1 * Math.sin(ang), orb };
+  });
+
+  const outerPositions = orbit.outer.map((orb, i) => {
+    const ang = i * ((Math.PI * 2) / 3) + 1.05 - t * 0.35;
+    return { x: cx + R2 * Math.cos(ang), y: cy + R2 * Math.sin(ang), orb };
+  });
+
+  const sparks = Array.from({ length: 6 }, (_, sp) => {
+    const sparkR = 38 + 3 * Math.sin(t * 4);
+    const sa = t * 1.5 + sp * (Math.PI / 3);
+    return { x: cx + sparkR * Math.cos(sa), y: cy + sparkR * Math.sin(sa) };
+  });
 
   return (
-    <canvas
-      ref={canvasRef}
-      width={450}
-      height={450}
-      className="block w-full max-w-[450px]"
-    />
+    <div className="relative w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[430px] md:h-[430px]">
+      <svg
+        viewBox="0 0 450 450"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute inset-0 w-full h-full"
+      >
+        {/* Radial glow bg */}
+        <defs>
+          <radialGradient id={`bg-${slide.id}`} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={accent} stopOpacity="0.16" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id={`center-${slide.id}`} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor={accent} stopOpacity="0.87" />
+            <stop offset="55%" stopColor={accent} stopOpacity="0.53" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0.07" />
+          </radialGradient>
+        </defs>
+
+        <circle cx={cx} cy={cy} r={148} fill={`url(#bg-${slide.id})`} />
+
+        {/* Orbit rings */}
+        <circle cx={cx} cy={cy} r={R1} fill="none" stroke="rgba(255,255,255,0.30)" strokeWidth="1.2" strokeDasharray="5 7" />
+        <circle cx={cx} cy={cy} r={R2} fill="none" stroke="rgba(255,255,255,0.30)" strokeWidth="1.2" strokeDasharray="5 7" />
+
+        {/* Orbiting nodes */}
+        {[...innerPositions, ...outerPositions].map(({ x, y, orb }, idx) => (
+          <g key={idx}>
+            <circle cx={x} cy={y} r="24" fill={orb.color} fillOpacity="0.15" />
+            <circle cx={x} cy={y} r="17" fill="rgba(10,15,26,0.93)" stroke={orb.color} strokeWidth="1.6" />
+          </g>
+        ))}
+
+        {/* Center pulse */}
+        <circle cx={cx} cy={cy} r={36 * pulse} fill={`url(#center-${slide.id})`} />
+        <circle cx={cx} cy={cy} r={34} fill="none" stroke={accent} strokeWidth="1.8" />
+
+        {/* Sparks */}
+        {sparks.map((s, i) => (
+          <circle key={i} cx={s.x} cy={s.y} r="1.5" fill={accent} opacity="0.65" />
+        ))}
+      </svg>
+
+      {/* Overlay icons via HTML (foreignObject workaround using absolute positioned divs) */}
+      <div className="absolute inset-0 pointer-events-none" style={{ width: "100%", height: "100%" }}>
+        {/* Inner orbs */}
+        {innerPositions.map(({ x, y, orb }, i) => {
+          const pct = 450;
+          const left = `${(x / pct) * 100}%`;
+          const top = `${(y / pct) * 100}%`;
+          const labelBelow = y > cy;
+          return (
+            <div
+              key={i}
+              className="absolute flex flex-col items-center"
+              style={{ left, top, transform: "translate(-50%, -50%)" }}
+            >
+              <orb.Icon style={{ color: orb.color, fontSize: 13 }} />
+              <span
+                className="text-[8px] font-semibold mt-1 whitespace-nowrap"
+                style={{
+                  color: orb.color,
+                  position: "absolute",
+                  top: labelBelow ? "22px" : "auto",
+                  bottom: labelBelow ? "auto" : "22px",
+                }}
+              >
+                {orb.label}
+              </span>
+            </div>
+          );
+        })}
+
+        {/* Outer orbs */}
+        {outerPositions.map(({ x, y, orb }, i) => {
+          const pct = 450;
+          const left = `${(x / pct) * 100}%`;
+          const top = `${(y / pct) * 100}%`;
+          const labelBelow = y > cy;
+          return (
+            <div
+              key={i}
+              className="absolute flex flex-col items-center"
+              style={{ left, top, transform: "translate(-50%, -50%)" }}
+            >
+              <orb.Icon style={{ color: orb.color, fontSize: 13 }} />
+              <span
+                className="text-[8px] font-semibold mt-1 whitespace-nowrap"
+                style={{
+                  color: orb.color,
+                  position: "absolute",
+                  top: labelBelow ? "22px" : "auto",
+                  bottom: labelBelow ? "auto" : "22px",
+                }}
+              >
+                {orb.label}
+              </span>
+            </div>
+          );
+        })}
+
+        {/* Center icon */}
+        <div
+          className="absolute flex flex-col items-center justify-center"
+          style={{ left: `${(cx / 450) * 100}%`, top: `${(cy / 450) * 100}%`, transform: "translate(-50%, -50%)" }}
+        >
+          <orbit.center.Icon style={{ color: "#fff", fontSize: 18 }} />
+          <span className="text-[8px] font-bold text-white/75 mt-1 whitespace-nowrap">
+            {orbit.center.label}
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -311,10 +382,7 @@ export default function HeroSlider() {
   const slide = SLIDES[current];
 
   return (
-    <div
-      className="relative w-full px-20 overflow-x-hidden bg-[#06090f]"
-      style={{ minHeight: "480px", height: "clamp(480px, 88vh, 620px)" }}
-    >
+    <div className="relative w-full overflow-x-hidden bg-[#06090f] min-h-[760px] md:min-h-[480px]  px-4 sm:px-8 lg:px-20">
       {/* ── Slides ── */}
       {SLIDES.map((s, i) => (
         <div
@@ -322,14 +390,12 @@ export default function HeroSlider() {
           className="absolute inset-0 flex flex-col md:flex-row items-center transition-opacity duration-1000"
           style={{ opacity: i === current ? 1 : 0 }}
         >
-          {/* BG gradient */}
           <div className="absolute inset-0" style={{ background: s.bgGradient }} />
           <BgPattern slide={s} />
 
-          {/* LEFT — Text content */}
+          {/* LEFT — Text */}
           <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-14 pt-10 pb-4 md:py-0 md:max-w-[55%] w-full">
 
-            {/* Badge */}
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-bold tracking-[1.5px] uppercase mb-3 w-fit"
               style={{
@@ -349,7 +415,6 @@ export default function HeroSlider() {
               {s.badge}
             </div>
 
-            {/* Accent line */}
             <div
               className="h-[3px] rounded-sm mb-3"
               style={{
@@ -359,9 +424,8 @@ export default function HeroSlider() {
               }}
             />
 
-            {/* Headline */}
             <h1
-              className="font-extrabold text-white leading-[1.1] mb-2 tracking-wider [word-spacing:4px]  whitespace-pre-line"
+              className="font-extrabold text-white leading-[1.1] mb-2 tracking-wider [word-spacing:4px] whitespace-pre-line"
               style={{
                 fontSize: "clamp(22px, 3.8vw, 46px)",
                 maxWidth: 600,
@@ -374,22 +438,16 @@ export default function HeroSlider() {
               {s.titlePost}
             </h1>
 
-            {/* Desc */}
             <p
               className="text-[13px] sm:text-[14px] text-white/70 mb-4 sm:mb-6 leading-relaxed py-3 font-light max-w-[390px]"
-              style={{
-                animation: i === current ? "fadeUp 0.6s 0.4s both" : "none",
-              }}
+              style={{ animation: i === current ? "fadeUp 0.6s 0.4s both" : "none" }}
             >
               {s.desc}
             </p>
 
-            {/* Buttons */}
             <div
               className="flex flex-wrap gap-3"
-              style={{
-                animation: i === current ? "fadeUp 0.6s 0.55s both" : "none",
-              }}
+              style={{ animation: i === current ? "fadeUp 0.6s 0.55s both" : "none" }}
             >
               <button
                 className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-[10px] text-[13px] font-bold text-white border-none cursor-pointer transition-all duration-200 hover:-translate-y-0.5"
@@ -397,12 +455,8 @@ export default function HeroSlider() {
                   background: `linear-gradient(135deg,${s.accent},${s.accentDark})`,
                   boxShadow: `0 4px 20px rgba(${s.glowRgb},0.38)`,
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = `0 8px 28px rgba(${s.glowRgb},0.55)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = `0 4px 20px rgba(${s.glowRgb},0.38)`;
-                }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = `0 8px 28px rgba(${s.glowRgb},0.55)`; }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = `0 4px 20px rgba(${s.glowRgb},0.38)`; }}
                 onClick={() => window.open("https://thedigicoders.com/placement", "_blank")}
               >
                 Our Placements
@@ -419,42 +473,30 @@ export default function HeroSlider() {
                 onMouseEnter={() => setOutlineHover(true)}
                 onMouseLeave={() => setOutlineHover(false)}
                 onClick={() => window.open("https://thedigicoders.com/summer-training", "_blank")}
-
               >
                 Join Training
               </button>
             </div>
 
-            {/* Stats */}
             <div
               className="flex items-center gap-0 mt-5 sm:mt-7 flex-wrap"
-              style={{
-                animation: i === current ? "fadeUp 0.5s 0.7s both" : "none",
-              }}
+              style={{ animation: i === current ? "fadeUp 0.5s 0.7s both" : "none" }}
             >
               {s.stats.map((st, si) => (
                 <div key={si} className="flex items-center">
-                  {si > 0 && (
-                    <div className="w-px h-8 bg-white/10 mx-4 sm:mx-5" />
-                  )}
+                  {si > 0 && <div className="w-px h-8 bg-white/10 mx-4 sm:mx-5" />}
                   <div>
-                    <div className="text-xl sm:text-2xl font-extrabold text-white leading-none tracking-tight">
-                      {st.val}
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest mt-0.5">
-                      {st.lbl}
-                    </div>
+                    <div className="text-xl sm:text-2xl font-extrabold text-white leading-none tracking-tight">{st.val}</div>
+                    <div className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-widest mt-0.5">{st.lbl}</div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* RIGHT — Orbit Canvas */}
-          <div className="relative z-10 flex-shrink-0 flex items-center justify-center md:w-[45%] w-full py-2 md:py-0 md:h-full overflow-visible">
-            <div className="overflow-visible flex items-center justify-center w-full">
-              <OrbitCanvas slide={s} active={i === current} />
-            </div>
+          {/* RIGHT — Orbit */}
+          <div className="relative z-10 flex-shrink-0 flex items-center justify-center md:w-[45%] w-full py-10 md:py-0 overflow-hidden">
+            <OrbitVisual slide={s} active={i === current} />
           </div>
         </div>
       ))}
@@ -491,13 +533,12 @@ export default function HeroSlider() {
 
       {/* ── Nav arrows ── */}
       <NavBtn right={56} label="Previous" onClick={() => goTo(current - 1)} accent={slide.accent} glowRgb={slide.glowRgb}>
-        ←
+        <FaArrowLeft size={13} />
       </NavBtn>
       <NavBtn right={14} label="Next" onClick={() => goTo(current + 1)} accent={slide.accent} glowRgb={slide.glowRgb}>
-        →
+        <FaArrowRight size={13} />
       </NavBtn>
 
-      {/* ── Keyframes ── */}
       <style>{`
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(28px); }
@@ -525,9 +566,9 @@ function NavBtn({ right, label, onClick, children, glowRgb }) {
       onClick={onClick}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
-      className="absolute top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/[0.14] text-white text-[15px] cursor-pointer flex items-center justify-center transition-all duration-200 z-20 hidden sm:flex"
+      className="absolute top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/[0.14] text-white cursor-pointer flex items-center justify-center transition-all duration-200 z-20 hidden sm:flex"
       style={{
-        right: right,
+        right,
         background: hov ? `rgba(${glowRgb},0.22)` : "rgba(255,255,255,0.07)",
         transform: hov ? "translateY(-50%) scale(1.1)" : "translateY(-50%)",
       }}

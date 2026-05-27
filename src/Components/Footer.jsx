@@ -24,13 +24,13 @@ const trainingLinks = [
 
 const quickLinks = [
   { label: "Home",         path: "/" },
-  { label: "About Us",     path: "/about" },
-  { label: "Registration", path: "/registration" },
-  { label: "Training",     path: "/training" },
-  { label: "Placement",    path: "/placement" },
-  { label: "Gallery",      path: "/gallery" },
-  { label: "Services",     path: "/services" },
-  { label: "Contact Us",   path: "/contact" },
+  { label: "About Us",     path: "https://thedigicoders.com/about" },
+  { label: "Registration", path: "https://thedigicoders.com/registration" },
+  { label: "Training",     path: "https://thedigicoders.com/summer-training" },
+  { label: "Placement",    path: "https://thedigicoders.com/placement" },
+  { label: "Gallery",      path: "https://thedigicoders.com/gallery" },
+  { label: "Services",     path: "https://digicoders.in/Home/SoftwareDevelopment" },
+  { label: "Contact Us",   path: "https://thedigicoders.com/contact" },
 ];
 
 const services = [
@@ -60,18 +60,27 @@ const FooterHeading = ({ title }) => (
   </h4>
 );
 
-const FooterNavLink = ({ label, path }) => (
+const FooterNavLink = ({ label, path, target, onClick }) => (
   <li>
     <NavLink
       to={path}
-      onClick={handleScrollTop}
-      target="_blank"
+      target={target}
+      onClick={onClick}
+      rel="noopener noreferrer"
       className="flex items-center gap-1.5 text-sm text-gray-400 font-medium py-0.5 transition-all duration-200 hover:pl-1 group"
-      style={({ isActive }) => isActive ? { color: '#ff8c00' } : {}}
+      style={({ isActive }) =>
+        isActive ? { color: "#ff8c00" } : {}
+      }
     >
-      <ChevronRight size={13} className="flex-shrink-0 group-hover:translate-x-0.5 transition-transform"
-        style={{ color: 'rgba(255,140,0,0.5)' }} />
-      <span className="group-hover:text-orange-400 transition-colors">{label}</span>
+      <ChevronRight
+        size={13}
+        className="flex-shrink-0 group-hover:translate-x-0.5 transition-transform"
+        style={{ color: "rgba(255,140,0,0.5)" }}
+      />
+
+      <span className="group-hover:text-orange-400 transition-colors">
+        {label}
+      </span>
     </NavLink>
   </li>
 );
@@ -86,14 +95,6 @@ const FooterPlainLink = ({ label }) => (
 );
 
 const Footer = () => {
-  const [formData,   setFormData]   = useState({ name: "", email: "" });
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = () => {
-    if (!formData.name || !formData.email) return;
-    setSubscribed(true);
-    setTimeout(() => { setSubscribed(false); setFormData({ name: "", email: "" }); }, 3000);
-  };
 
   return (
     <footer className="font-sans" style={{ background: 'linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%)' }}>
@@ -111,7 +112,7 @@ const Footer = () => {
           <span className="opacity-30 hidden sm:inline">|</span>
           <span className="text-green-400 flex items-center gap-1"><FaPhone className="text-green-500 text-lg rotate-100" /> +91 9198483820</span>
           <span className="opacity-30 hidden sm:inline">|</span>
-          <span className="text-gray-300">Lucknow &amp; Kanpur</span>
+          <span className="text-gray-300">Lucknow &amp; Kanpur &amp; Gorakhpur</span>
         </div>
       </div>
 
@@ -125,10 +126,10 @@ const Footer = () => {
       </div>
 
       {/* ── Main Grid ── */}
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-6xl mx-auto px-10 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         {/* Col 1: Brand */}
-        <div>
+        <div className="w-full">
           <img src={logo} alt="Footer logo" />
           <p className="text-sm text-gray-400 leading-relaxed mb-5">
             Uttar Pradesh's leading IT training company — empowering students with industry-ready
@@ -156,7 +157,7 @@ const Footer = () => {
         </div>
 
         {/* Col 2: Training Programs */}
-        <div>
+        <div className="w-full">
           <FooterHeading title="Training Programs" />
           <ul className="flex flex-col gap-1">
             {trainingLinks.map((link) => (
@@ -166,17 +167,23 @@ const Footer = () => {
         </div>
 
         {/* Col 3: Quick Links + Badges */}
-        <div>
+        <div className="w-full">
           <FooterHeading title="Quick Links" />
           <ul className="flex flex-col gap-1 mb-6">
             {quickLinks.map((link) => (
-              <FooterNavLink key={link.label} label={link.label} path={link.path} />
+              <FooterNavLink
+                key={link.label}
+                label={link.label}
+                path={link.path}
+                target={link.path === "/" ? "_self" : "_blank"}
+                onClick={link.path === "/" ? handleScrollTop : undefined}
+              />
             ))}
           </ul>
         </div>
 
-        {/* Col 4: Newsletter + Services */}          
-          <div>
+        {/* Col 4: Services */}          
+          <div className="w-full">
             <FooterHeading title="Our Services" />
             <ul className="flex flex-col gap-1">
               {services.map((s) => <FooterPlainLink key={s} label={s} />)}
