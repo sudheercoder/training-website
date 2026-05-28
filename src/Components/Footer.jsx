@@ -193,7 +193,7 @@ const Footer = () => {
       </div>
 
       {/* ── Main Grid ── */}
-      <div className="max-w-6xl mx-auto px-10 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto px-10 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
         {/* Col 1: Brand */}
         <div className="w-full">
@@ -261,11 +261,11 @@ const Footer = () => {
 
       {/* ── Divider ── */}
       <div className="max-w-6xl mx-auto px-6">
-        <div className="h-px" style={{ background: 'rgba(255,255,255,0.08)' }} />
+        <div className="h-px" style={{ background: 'gray' }} />
       </div>
 
       {/* Bottom Training Section */}
-      <section className="bg-[#0d1b2a] py-14 px-6 md:px-12">
+      <section className="py-10 px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {columns.map((col) => (
             <div key={col.title}>

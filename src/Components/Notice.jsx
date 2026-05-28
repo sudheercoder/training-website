@@ -41,14 +41,15 @@ const Notice = () => {
       <div className="overflow-hidden w-full md:flex-1">
         <span
           className="whitespace-nowrap inline-block text-[11px] md:text-xs font-medium"
-          style={{ color: '#ffd180', animation: 'notice-marquee 14s linear infinite' }}
+          style={{ color: '#ffd180', animation: 'notice-marquee 25s linear infinite' }}
         >
           🎓 Registrations Open for Training Session 2026–27 &nbsp;•&nbsp;
           Toll Free: 1800-200-5802 &nbsp;•&nbsp;
           B.Tech | Diploma | BCA | MCA &nbsp;•&nbsp;
-          CSE / IT / CE / EE &nbsp;•&nbsp;
-          Aliganj, Lucknow &nbsp;•&nbsp;
-          Yashodha Nagar, Kanpur &nbsp;•&nbsp;
+          CSE / IT / CE / EE &nbsp;&nbsp;•&nbsp;
+          Aliganj, Lucknow &nbsp;&nbsp;•&nbsp;
+          Yashodha Nagar, Kanpur &nbsp;&nbsp;•&nbsp; 
+          Gida Gorakhpur
         </span>
       </div>
 
