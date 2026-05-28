@@ -9,7 +9,8 @@ import hero2 from '../../public/Images/hero2.jpg'
 import hero3 from '../../public/Images/hero3.jpg'
 import ExpertSection from '../Components/ExpertSection';
 import ServicesSection from '../Components/ServicesSection';
-import HeroSlider from '../Components/HeroSlider';
+// import HeroSlider from '../Components/HeroSlider';
+import HeroSection from '../Components/HeroSection'
 import TrainingSection from '../Components/TrainingSection';
 import WhyChooseUs from '../Components/WhyChooseUs';
 import BranchesSection from '../Components/BranchSection';
@@ -93,7 +94,8 @@ const Home = () => {
     <>
 
       {/* HERO SECTION */}
-        <HeroSlider/>
+        {/* <HeroSlider/> */}
+        <HeroSection/>
 
       {/* STATS SECTION */}
       <section className="py-14 px-6 bg-white" ref={statsRef}>
