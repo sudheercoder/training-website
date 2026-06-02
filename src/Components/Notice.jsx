@@ -5,7 +5,7 @@ import { IoIosPhonePortrait } from "react-icons/io";
 const Notice = () => {
   return (
     <div
-      className="relative z-[1001] px-4 md:px-10 py-2 md:py-2.5 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 overflow-hidden text-xs md:text-sm"
+      className="relative z-[50] px-4 md:px-10 py-2 md:py-2.5 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 overflow-hidden text-xs md:text-sm"
       style={{ background: '#0d1b2a', color: 'white' }}
     >
       {/* LEFT SECTION */}
