@@ -252,7 +252,7 @@ const Footer = () => {
           <img src={logo} alt="Footer logo" />
           <p className="text-sm text-gray-100 leading-relaxed mb-5">
             Uttar Pradesh's leading IT training company — empowering students with industry-ready
-            skills in Kanpur since 2017. 7+ years, 1000+ lives changed.
+            skills in Kanpur since 2017. 
           </p>
 
           {/* Social Icons */}
