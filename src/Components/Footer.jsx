@@ -205,12 +205,6 @@ const Footer = () => {
           <span className="opacity-30 hidden sm:inline">|</span>
           <span className="text-gray-300">21000+ Students Trained</span>
           <span className="opacity-30 hidden sm:inline">|</span>
-          <a  href="tel:+919198483820"
-            className="text-green-400 flex items-center gap-1 hover:text-green-300 transition-colors"
-          >
-            <FaPhone className="text-green-500 text-lg rotate-100" />
-            +91 9198483820
-          </a>
           <span className="opacity-30 hidden sm:inline">|</span>
           <span className="text-gray-300 flex items-center gap-2">
             <a  href="https://www.google.com/maps/place/DigiCoders+Technologies+Private+Limited,+Best+Software%2FWebsite%2FMobile+App+Development+Company+in+Lucknow/@26.9046469,80.9470183,17z/data=!3m1!4b1!4m6!3m5!1s0x399bfd90f852511b:0xea3004cdf494ecbb!8m2!3d26.9046421!4d80.9495932!16s%2Fg%2F11h37gc4sq?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"

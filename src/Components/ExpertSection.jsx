@@ -6,6 +6,10 @@ import sumeshgupta from '/Images/sumesh-gupta-team-lead-graphics.png'
 import abhisheksingh from '/Images/abhishek-singh-sr.-data-analyst-expert.png'
 import masoomabbas from '/Images/masoom-abbas-business-development-analyst.png'
 import pushkalsingh from '/Images/pushkal-singh-coorporate-relation-manager.jpeg'
+import divyapal from '/Images/divya-pal-hr-executive.png'
+import gayatri from '/Images/gayatri-vishwakarma-hr-executive.png'
+import roshni from '/Images/roshani-yadav-social-media-manager.jpeg'
+import yogeshpal from '/Images/yogesh-pal-full-stack-developer.png'
 
 
 // ───────── DATA ────────────
@@ -14,60 +18,66 @@ const expertsData = [
     id: 1,
     image: vedprakash,
     name: "Ved Prakash",
-    role: "Team Lead (Web Developer)",
-    experience: "2+ Years in Web Development",
-    expertise: ["React", "Node.js", "MongoDB"],
-    linkedin: "#",
+    role: "Software Developer",
   },
   {
     id: 2,
     image: sumeshgupta,
     name: "Sumesh Gupta",
     role: "Team Lead (Graphics)",
-    experience: "3+ Years in Graphic Designing",
-    expertise: ["Photoshop", "Illustrator", "CorelDRAW"],
-    linkedin: "#",
   },
   {
     id: 3,
     image: abhisheksingh,
     name: "Abhishek Singh",
     role: "Sr. Data Analyst Expert",
-    experience: "4+ Years in Data Analytics",
-    expertise: ["Power BI", "Excel", "SQL"],
-    linkedin: "#",
   },
   {
     id: 4,
     image: adityakashyap,
     name: "Aditya Kashyap",
     role: "Business Development Executive",
-    experience: "5+ Years in Business Development",
-    expertise: ["Client Handling", "Communication", "Sales Strategy"],
-    linkedin: "#",
   },
   {
     id: 5,
     image: masoomabbas,
     name: "Masoom Abbas",
     role: "Business Development Executive",
-    experience: "9+ Years in Business Growth",
-    expertise: ["Lead Generation", "Marketing", "Client Relations"],
-    linkedin: "#",
   },
   {
     id: 6,
     image: pushkalsingh,
     name: "Pushkal Singh",
     role: "Corporate Relation Manager",
-    experience: "5+ Years in Corporate Relations",
-    expertise: ["Partnership Management", "Networking", "Communication"],
-    linkedin: "#",
   },
+  {
+  id: 7,
+  image: divyapal,
+  name: "Divya Pal",
+  role: "HR Executive",
+},
+  {
+  id: 8,
+  image: roshni,
+  name: "Roshni Yadav",
+  role: "Social Media Manager"
+},
+{
+  id: 9,
+  image: gayatri,
+  name: "Gayatri Vishvakarma",
+  role: "Hr Executive",
+},
+{
+  id: 10,
+  image: yogeshpal,
+  name: "Yogesh Pal",
+  role: ".NET Developer",
+},
 ];
 
 // ────────────  EXPERT CARD ───────
-const ExpertCard = ({ image, name, role, experience, expertise, linkedin }) => {
+const ExpertCard = ({ image, name, role}) => {
   return (
     <div className="flex-shrink-0 w-72 bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 group">
 
@@ -82,44 +92,9 @@ const ExpertCard = ({ image, name, role, experience, expertise, linkedin }) => {
 
       {/* Content Area */}
       <div className="px-4 pb-6 mt-2">
+        <h3 className="text-xl font-bold text-center text-gray-900 leading-tight">{name}</h3>
+        <p className="text-orange-600 text-center text-sm font-semibold mt-0.5">{role}</p>
 
-        {/* Name & Role */}
-        <h3 className="text-lg font-bold text-gray-900 leading-tight">{name}</h3>
-        <p className="text-orange-600 text-sm font-semibold mt-0.5">{role}</p>
-
-        {/* Divider */}
-        <div className="mt-3 h-[2px] w-24 bg-gradient-to-r from-orange-500 to-transparent rounded-full" />
-
-        {/* Experience */}
-        <p className="text-xs text-gray-400 font-medium uppercase tracking-widest my-2">Experience</p>
-        <p className="text-sm text-gray-600 font-medium">{experience}</p>
-
-        {/* Expertise Tags */}
-        <div className="flex flex-wrap gap-1.5 mt-4">
-          {expertise.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs bg-orange-50 text-orange-500 px-2.5 py-1 rounded-full font-medium border border-blue-100"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* LinkedIn Button */}
-        {linkedin && (
-          <a
-            href={linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-xs text-gray-500 hover:text-blue-500 transition-colors duration-200 font-medium"
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-            View Profile
-          </a>
-        )}
       </div>
     </div>
   );

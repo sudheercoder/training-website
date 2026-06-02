@@ -58,8 +58,8 @@ function StatCard({ stat, index, inView }) {
 const statsData = [
   { value: 21000, suffix: '+', label: 'Students Trained',  icon: Users,      color: '#ff8c00' },
   { value: 8,    suffix: '+', label: 'Years Experience',  icon: Clock,      color: '#0d1b2a' },
-  { value: 20000,  suffix: '+', label: 'Placements Done',   icon: TrendingUp, color: '#2e7d32' },
-  { value: 50,   suffix: '+', label: 'Hiring Partners',   icon: Building2,  color: '#e65100' },
+  { value: 50,  suffix: '+', label: 'Expert Mentors',   icon: TrendingUp, color: '#2e7d32' },
+  { value: 40,   suffix: '+', label: 'Hiring Partners',   icon: Building2,  color: '#e65100' },
 ]
 
 const Home = () => {
@@ -233,10 +233,10 @@ const Home = () => {
             One step is all it takes — we will guide you the rest of the way.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
+          <div className="flex gap-4 justify-center mb-8">
             <a href="https://thedigicoders.com/registration"
               target='_blank'
-              className="group relative px-8 py-4 font-bold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
+              className="group relative px-8 py-4 md:font-bold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
               style={{ background: '#ff8c00' }}
               onMouseEnter={e => e.currentTarget.style.background = '#e65100'}
               onMouseLeave={e => e.currentTarget.style.background = '#ff8c00'}
@@ -246,7 +246,7 @@ const Home = () => {
             </a>
             <a href="https://thedigicoders.com/contact"
               target='_blank'
-              className="px-8 py-4 font-bold rounded-xl border text-white transition-all duration-300 hover:-translate-y-0.5"
+              className="md:px-8 px-6 py-4 md:font-bold rounded-xl border text-white transition-all duration-300 hover:-translate-y-0.5"
               style={{ background: 'rgba(76,175,80,0.12)', borderColor: 'rgba(76,175,80,0.35)', color: '#81c784' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#4caf50'; e.currentTarget.style.color = 'white'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'rgba(76,175,80,0.12)'; e.currentTarget.style.color = '#81c784'; }}
