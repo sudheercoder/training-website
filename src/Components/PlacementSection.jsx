@@ -307,14 +307,6 @@ const PlacementSection = () => {
         <MarqueeRow items={placements1} direction="left" speed={20} />
       </div>
 
-      {/* ── Row 2 — scrolls right (uncomment to enable) ── */}
-      {/* <div className="mt-4 mb-8">
-        <p className="text-[11px] font-bold uppercase tracking-[1.2px] text-gray-400 mb-2 px-1 text-right">
-          Featured alumni ←
-        </p>
-        <MarqueeRow items={placements2} direction="right" speed={24} />
-      </div> */}
-
       {/* ── Hiring Partners ── */}
       <div>
         <div className="text-center">

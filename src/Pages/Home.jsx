@@ -44,7 +44,7 @@ function StatCard({ stat, index, inView }) {
         style={{ backgroundColor: stat.color + '18' }}>
         <Icon size={22} style={{ color: stat.color }} />
       </div>
-      <div className="text-4xl font-black text-gray-900 tracking-tight">
+      <div className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
         {count}{stat.suffix}
       </div>
       <div className="text-sm text-gray-500 font-medium mt-1">{stat.label}</div>
